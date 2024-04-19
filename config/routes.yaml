@@ -1,0 +1,11 @@
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+controllers_symfony_beyond_crud:
+  resource:
+    path: ../_application/SymfonyBeyondCrud/Infrastructure/Web/Controller/
+    namespace: App\SymfonyBeyondCrud\Infrastructure\Web\Controller
+  type: attribute
