@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Symfony Beyond Crud</title>
+    <title>Symfony Beyond Crud -- Application Page</title>
 
+    {{ vite_entry_link_tags('app') }}
     {{ vite_entry_link_tags('tailwind') }}
-
 </head>
 <body>
 
-Welcome!
+<div class="bg-gray-800 p-4">
+    <div class="text-xl font-bold text-white">Symfony Beyond Crud</div>
+</div>
+<div id="app">
+
+</div>
+
+{{ vite_entry_script_tags('app') }}
 
 </body>
 </html>

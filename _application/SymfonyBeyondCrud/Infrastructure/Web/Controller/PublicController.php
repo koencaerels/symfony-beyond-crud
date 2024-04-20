@@ -15,7 +15,7 @@ class PublicController extends AbstractController
     // Index
     // ——————————————————————————————————————————————————————————————————————
 
-    #[Route('/', name: 'app_home', methods: ['GET'], locale: 'en')]
+    #[Route('/', name: 'start', methods: ['GET'], locale: 'en')]
     public function index(): Response
     {
         return $this->render('public/index.html.twig');

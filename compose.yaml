@@ -55,7 +55,7 @@ services:
   node:
     image: node:20
     user: node
-    container_name: sbc_node_dev
+    container_name: sbc_node
     command: tail -f /dev/null # This keeps the container running in the background.
     ports:
       - "5173:5173"

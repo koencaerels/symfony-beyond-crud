@@ -1,23 +1,24 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import VueDevTools from 'vite-plugin-vue-devtools'
+import path from "path";
+import Vue from "@vitejs/plugin-vue";
 import liveReload from "vite-plugin-live-reload";
 import symfonyPlugin from "vite-plugin-symfony";
+import {defineConfig} from "vite";
+import VitePluginVueDevTools from "vite-plugin-vue-devtools";
+import {fileURLToPath} from "node:url";
 const __dirname = path.resolve(path.dirname(""));
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  publicDir: false,
   plugins: [
     symfonyPlugin({
       viteDevServerHostname: "localhost",
     }),
+    Vue({}),
     liveReload([
       "./_application/SymfonyBeyondCrud/Infrastructure/*/Controller/**/*.php",
     ]),
-    vue(),
-    VueDevTools(),
+    VitePluginVueDevTools(),
   ],
   resolve: {
     alias: {
@@ -25,7 +26,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./_frontend/src', import.meta.url))
     }
   },
-  devServer: "localhost",
+  // devServer: "localhost",
   build: {
     manifest: true,
     outDir: "public/build/",
