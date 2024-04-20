@@ -1,0 +1,61 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Symfony Beyond Crud",
+        "description": "A scalable symfony project that goes beyond crud.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "\/api": {
+            "get": {
+                "operationId": "get_api_start",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/api\/books": {
+            "get": {
+                "operationId": "get_api_get_books",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/api\/book\/{id}": {
+            "get": {
+                "operationId": "get_api_get_book_by_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "\\d+"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/api\/command\/execute": {
+            "get": {
+                "operationId": "get_api_command_endpoint",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    }
+}
