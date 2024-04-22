@@ -15,11 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      ## —— Npm ————————————————————————————————————————————————————————————
+      ## —— Npm install ————————————————————————————————————————————————————————
 
       - name: Nodejs install
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '21'
-
-      - run: npm install
+              node-version: '21'
+      - run: npm ci
