@@ -32,6 +32,12 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
 
+      ## —— Database & cache ——————————————————————————————————————————————————
+
+      - name: Create Database
+        run: |
+          touch var/data.db
+
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
@@ -44,19 +50,13 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      ## —— Database & cache ——————————————————————————————————————————————————
-
-      - name: Create Database
-        run: |
-          touch var/data.db
-
       - name: Create cache directory
         run: |
           chmod 777 ./bin/console
           mkdir -p var/cache
           chmod 777 var/cache
           ./bin/console cache:clear
-          
+
       ## —— PHP QA ———————————————————————————————————————————————————————————
 
       - name: QA CS
