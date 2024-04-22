@@ -34,10 +34,6 @@ jobs:
 
       ## —— Database & cache ——————————————————————————————————————————————————
 
-      - name: Create Database
-        run: |
-          touch var/data.db
-
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v3
@@ -49,6 +45,10 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
+
+      - name: Create Database
+        run: |
+          touch var/data.db
 
       - name: Create cache directory
         run: |
