@@ -1,0 +1,25 @@
+name: Frontend Build QA and Test
+
+on:
+  push:
+    branches: [ "main", "development" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      ## —— Npm ————————————————————————————————————————————————————————————
+
+      - name: Nodejs install
+        uses: actions/setup-node@v2
+        with:
+          node-version: '21'
+
+      - run: npm install
