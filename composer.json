@@ -1,5 +1,6 @@
 {
   "name": "symfony/beyond-crud",
+  "description": "Symfony Beyond CRUD Example Application",
   "type": "project",
   "license": "MIT",
   "minimum-stability": "stable",
