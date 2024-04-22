@@ -15,5 +15,4 @@ interface BookRepositoryInterface
     public function getByUuid(string $uuid): Book;
 
     public function all(): array;
-
 }

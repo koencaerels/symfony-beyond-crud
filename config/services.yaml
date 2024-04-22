@@ -49,8 +49,11 @@ services:
     App\SymfonyBeyondCrud\Application\Query\:
         resource: '../_application/SymfonyBeyondCrud/Application/Query/**/*Query.php'
 
-    App\SymfonyBeyondCrud\Application\Command\:
-        resource: '../_application/SymfonyBeyondCrud/Application/Command/**/*Handler.php'
+    App\SymfonyBeyondCrud\Application\Command\Commands\:
+        resource: '../_application/SymfonyBeyondCrud/Application/Command/Commands/**/*Handler.php'
+
+    App\SymfonyBeyondCrud\Application\Command\Executor\:
+        resource: '../_application/SymfonyBeyondCrud/Application/Command/Executor'
 
     # --------------------------------------------------------------------------------------
     # aliases

@@ -6,5 +6,4 @@ namespace App\SymfonyBeyondCrud\Domain\Model\User;
 
 class User implements UserInterface
 {
-
 }

@@ -6,5 +6,4 @@ namespace App\SymfonyBeyondCrud\Application\Query\Common;
 
 interface ReadModelInterface
 {
-
 }

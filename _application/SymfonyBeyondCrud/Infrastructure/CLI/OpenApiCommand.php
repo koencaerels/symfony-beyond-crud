@@ -15,15 +15,11 @@ class OpenApiCommand extends Command
 
     public function __construct(
         ApiDocGenerator $apiDocGenerator,
-    )
-    {
+    ) {
         parent::__construct();
         $this->apiDocGenerator = $apiDocGenerator;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -31,9 +27,6 @@ class OpenApiCommand extends Command
             ->setDescription('Create OPENAPI schema from annotated PHP controllers');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $documentation = $this->apiDocGenerator->generate();

@@ -4,40 +4,53 @@ declare(strict_types=1);
 
 namespace App\SymfonyBeyondCrud\Infrastructure\Web\Controller;
 
-use App\SymfonyBeyondCrud\Application\Query\Demo\Queries\BookQuery;
-use App\SymfonyBeyondCrud\Application\Query\Demo\Routes\RoutesBookTrait;
+use App\SymfonyBeyondCrud\Application\Command\Commands\Demo\ChangeBook\ChangeBookTrait;
+use App\SymfonyBeyondCrud\Application\Command\Executor\CommandResultServiceInterface;
+use App\SymfonyBeyondCrud\Application\Command\Executor\RequestCommandConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-class ApiController extends AbstractController
+class ApiCommandController extends AbstractController
 {
+    // ——————————————————————————————————————————————————————————————————————
+    // Routes
+    // ——————————————————————————————————————————————————————————————————————
+
+    use ChangeBookTrait;
 
     // ——————————————————————————————————————————————————————————————————————
-    // Use routes (via traits)
+    // Properties
     // ——————————————————————————————————————————————————————————————————————
 
-    use RoutesBookTrait;
+    protected array $apiAccess;
 
     // ——————————————————————————————————————————————————————————————————————
-    // Constructor (inject the queries)
+    // Constructor
     // ——————————————————————————————————————————————————————————————————————
 
     public function __construct(
-        private readonly BookQuery $bookQuery
-    )
-    {
+        readonly protected KernelInterface $appKernel,
+        readonly protected RequestCommandConverter $requestCommandConverter,
+        readonly protected CommandResultServiceInterface $commandResultService,
+        readonly protected Security $security,
+    ) {
+        $this->apiAccess = [];
+        if ('dev' == $this->appKernel->getEnvironment()) {
+            $this->apiAccess = ['Access-Control-Allow-Origin' => '*'];
+        }
     }
 
     // ——————————————————————————————————————————————————————————————————————
-    // Api queries
+    // Api commands
     // ——————————————————————————————————————————————————————————————————————
 
-    #[Route('/api', name: 'api_start', methods: ['GET'])]
-    public function apiStart(): Response
+    #[Route('/api/command/execute', name: 'api_command_endpoint', methods: ['GET'])]
+    public function apiCommandEndpoint(): Response
     {
-        return new JsonResponse('Welcome to the API!');
+        return new JsonResponse('Welcome to the command endpoint.');
     }
-
 }

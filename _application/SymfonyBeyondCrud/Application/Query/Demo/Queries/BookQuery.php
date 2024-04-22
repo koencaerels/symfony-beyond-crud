@@ -11,8 +11,7 @@ readonly class BookQuery
 {
     public function __construct(
         private BookRepositoryInterface $bookRepository,
-    )
-    {
+    ) {
     }
 
     /**

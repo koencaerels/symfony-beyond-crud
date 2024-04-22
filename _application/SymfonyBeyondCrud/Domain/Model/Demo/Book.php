@@ -11,7 +11,6 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -31,22 +30,20 @@ class Book
     // —————————————————————————————————————————————————————————————————————————
 
     private function __construct(
-        Uuid   $uuid,
+        Uuid $uuid,
         string $title,
         string $author,
-    )
-    {
+    ) {
         $this->uuid = $uuid;
         $this->title = $title;
         $this->author = $author;
     }
 
     public static function make(
-        Uuid   $uuid,
+        Uuid $uuid,
         string $title,
         string $author,
-    ): self
-    {
+    ): self {
         return new self(
             $uuid,
             $title,
@@ -57,8 +54,7 @@ class Book
     public function change(
         string $title,
         string $author,
-    ): void
-    {
+    ): void {
         $this->title = $title;
         $this->author = $author;
     }

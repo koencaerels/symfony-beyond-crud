@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 trait RoutesBookTrait
 {
-
     // ——————————————————————————————————————————————————————————————————————
     // getBooks
     // ——————————————————————————————————————————————————————————————————————
@@ -29,5 +28,4 @@ trait RoutesBookTrait
     {
         return new JsonResponse($this->bookQuery->byId($id));
     }
-
 }

@@ -10,7 +10,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class PublicController extends AbstractController
 {
-
     // ——————————————————————————————————————————————————————————————————————
     // Index
     // ——————————————————————————————————————————————————————————————————————
@@ -20,5 +19,4 @@ class PublicController extends AbstractController
     {
         return $this->render('public/index.html.twig');
     }
-
 }

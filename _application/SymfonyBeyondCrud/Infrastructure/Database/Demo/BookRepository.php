@@ -33,6 +33,7 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
         if ($model->getId()) {
             $id = $model->getId();
         }
+
         return $id;
     }
 
@@ -42,6 +43,7 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
         if (is_null($model)) {
             throw new EntityNotFoundException(self::NO_ENTITY_FOUND);
         }
+
         return $model;
     }
 
@@ -55,6 +57,7 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
         if (is_null($model)) {
             throw new EntityNotFoundException(self::NO_ENTITY_FOUND);
         }
+
         return $model;
     }
 
@@ -62,6 +65,7 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
     {
         $em = $this->getEntityManager();
         $em->remove($model);
+
         return true;
     }
 
@@ -72,5 +76,4 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
     {
         return $this->findAll();
     }
-
 }
