@@ -1,20 +1,20 @@
-import {createApp} from 'vue';
-import {createPinia} from 'pinia';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-import App from './App.vue';
+import App from './App.vue'
 
 // -- prime icons
-import 'primeicons/primeicons.css';
+import 'primeicons/primeicons.css'
 
 // -- prime vue + components
-import PrimeVue from "primevue/config";
-import PrimeOne from 'primevue/themes/primeone';
-import Aura from 'primevue/themes/primeone/aura';
-import Button from "primevue/button";
+import PrimeVue from 'primevue/config'
+import PrimeOne from 'primevue/themes/primeone'
+import Aura from 'primevue/themes/primeone/aura'
+import Button from 'primevue/button'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(createPinia());
+app.use(createPinia())
 
 // -- prime vue + components
 app.use(PrimeVue, {
@@ -27,7 +27,7 @@ app.use(PrimeVue, {
       cssLayer: false
     }
   }
-});
-app.component('Button', Button);
+})
+app.component('Button', Button)
 
-app.mount('#app');
+app.mount('#app')

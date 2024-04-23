@@ -11,10 +11,10 @@ use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class ChangeBookHandler implements CommandHandlerInterface
+readonly class ChangeBookHandler implements CommandHandlerInterface
 {
     public function __construct(
-        private readonly BookRepositoryInterface $bookRepository,
+        private BookRepositoryInterface $bookRepository,
     ) {
     }
 
@@ -22,10 +22,10 @@ class ChangeBookHandler implements CommandHandlerInterface
     public function __invoke(ChangeBook $command): void
     {
         $isValid = $this->validate($command);
-        //        $book = $this->bookRepository->getById($command->id);
-        print_r('handler');
-        print_r($command);
-        exit;
+//        $book = $this->bookRepository->getById($command->id);
+//        print_r('handler');
+//        print_r($command);
+//        exit;
     }
 
     public function validate(CommandInterface $command): bool

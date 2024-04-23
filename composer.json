@@ -1,12 +1,12 @@
 {
   "name": "symfony/beyond-crud",
-  "description": "Symfony Beyond CRUD Example Application",
+  "description": "Symfony Beyond CRUD - Example Application",
   "type": "project",
   "license": "MIT",
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.3",
     "ext-ctype": "*",
     "ext-iconv": "*",
     "doctrine/dbal": "^3",

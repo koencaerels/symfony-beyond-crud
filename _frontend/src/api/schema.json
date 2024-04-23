@@ -6,6 +6,54 @@
         "version": "1.0.0"
     },
     "paths": {
+        "\/api\/command\/execute": {
+            "get": {
+                "operationId": "get_api_command_endpoint",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/api\/execute\/changeBook": {
+            "post": {
+                "operationId": "changeBook",
+                "requestBody": {
+                    "description": "Command to execute",
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/ChangeBook"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Command result response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/CommandResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/api\/docs": {
+            "get": {
+                "operationId": "get_api_documentation",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "\/api": {
             "get": {
                 "operationId": "get_api_start",
@@ -18,43 +66,155 @@
         },
         "\/api\/books": {
             "get": {
-                "operationId": "get_api_get_books",
+                "operationId": "getBooks",
                 "responses": {
-                    "default": {
-                        "description": ""
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#\/components\/schemas\/Book"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
         "\/api\/book\/{id}": {
             "get": {
-                "operationId": "get_api_get_book_by_id",
+                "operationId": "getBookById",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
+                        "description": "The ID of the book",
                         "required": true,
                         "schema": {
-                            "type": "string",
+                            "type": "integer",
                             "pattern": "\\d+"
                         }
                     }
                 ],
                 "responses": {
-                    "default": {
-                        "description": ""
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/Book"
+                                }
+                            }
+                        }
                     }
                 }
             }
-        },
-        "\/api\/command\/execute": {
-            "get": {
-                "operationId": "get_api_command_endpoint",
-                "responses": {
-                    "default": {
-                        "description": ""
+        }
+    },
+    "components": {
+        "schemas": {
+            "ChangeBook": {
+                "required": [
+                    "id",
+                    "title",
+                    "author"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "changeBook"
+                    },
+                    "user": {
+                        "title": "This is set in @see CommandResultService",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#\/components\/schemas\/UserInterface"
+                            }
+                        ]
                     }
-                }
+                },
+                "type": "object"
+            },
+            "CommandResult": {
+                "required": [
+                    "success",
+                    "message",
+                    "code",
+                    "duration"
+                ],
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "integer"
+                    },
+                    "duration": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                },
+                "type": "object"
+            },
+            "Book": {
+                "required": [
+                    "id",
+                    "uid",
+                    "title",
+                    "author"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "uid": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UserInterface": {
+                "required": [
+                    "roles",
+                    "userIdentifier"
+                ],
+                "properties": {
+                    "roles": {
+                        "title": "Returns the roles granted to the user.",
+                        "description": "public function getRoles()\n    {\n        return ['ROLE_USER'];\n    }\n\nAlternatively, the roles might be stored in a ``roles`` property,\nand populated in any number of different ways when the user object\nis created.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "userIdentifier": {
+                        "title": "Returns the identifier for this user (e.g. username or email address).",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             }
         }
     }

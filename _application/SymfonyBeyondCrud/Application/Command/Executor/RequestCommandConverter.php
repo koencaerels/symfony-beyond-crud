@@ -34,7 +34,6 @@ final readonly class RequestCommandConverter
         } catch (NotNormalizableValueException) {
             $command = null;
         }
-        $request->attributes->set('command', $command);
 
         return $command;
     }

@@ -1,6 +1,6 @@
 {
   "name": "symfony-beyond-crud",
-  "description": "A Symfony Beyond CRUD Example Frontend Application.",
+  "description": "A Symfony Beyond CRUD - Example Frontend Application.",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -11,7 +11,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint _frontend --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write _frontend/src"
+    "format": "prettier --write _frontend/src",
+    "openapi:gen": "npx openapi-zod-client './_frontend/src/api/schema.json' -o './_frontend/src/api/client.ts'"
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -41,6 +42,7 @@
     "vite": "^5.2.8",
     "vite-plugin-symfony": "^6.4.3",
     "vite-plugin-vue-devtools": "^7.0.25",
-    "vue-tsc": "^2.0.11"
+    "vue-tsc": "^2.0.11",
+    "openapi-typescript": "^6.7.4"
   }
 }
